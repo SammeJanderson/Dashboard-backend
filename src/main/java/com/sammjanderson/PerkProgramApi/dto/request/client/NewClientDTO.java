@@ -13,12 +13,11 @@ import java.security.MessageDigest;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterNewClient {
+public class NewClientDTO {
+
     private String name;
 
     private String email;
 
     private Integer pointBalance;
-
-    private String sha256Password ;
 }

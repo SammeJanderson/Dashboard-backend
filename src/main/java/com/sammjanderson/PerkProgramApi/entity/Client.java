@@ -1,5 +1,6 @@
 package com.sammjanderson.PerkProgramApi.entity;
 
+import com.sammjanderson.PerkProgramApi.utils.OrderNumberGenerator;
 import com.sammjanderson.PerkProgramApi.utils.PasswordCryptography;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,13 +43,14 @@ public class Client {
     String salt;
 
     @Column
-    private Boolean wasActivated = false;
+    private Boolean isActive = false;
 
 
 
     {
         try {
-            salt = PasswordCryptography.getSHA(name + email);
+            //this is very ugly but i'm using the order number generator to implement yet another ramdomness to the salt
+            salt = PasswordCryptography.getSHA(name + email + OrderNumberGenerator.generateOrderId());
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
