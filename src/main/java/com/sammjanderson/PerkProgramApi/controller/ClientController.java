@@ -7,7 +7,6 @@ import com.sammjanderson.PerkProgramApi.service.ClientService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class ClientController {
 
-    private ClientService clientService;
+    private final ClientService clientService;
 
     @GetMapping("/all")
     public List<ClientDTO> listAllClients() {

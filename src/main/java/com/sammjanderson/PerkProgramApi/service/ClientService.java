@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Service
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class ClientService {
-    //dependencies
+
     private final ClientMapper clientMapper = ClientMapper.INSTANCE;
     private ClientRepository clientRepository;
 
