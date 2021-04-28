@@ -1,7 +1,6 @@
 package com.sammjanderson.PerkProgramApi.dto.request.client;
 
 
-import com.sammjanderson.PerkProgramApi.entity.Receipt;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,18 +16,17 @@ import java.util.UUID;
 @NoArgsConstructor
 public class ClientDTO {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID clientId;
-
     private String name;
 
     private String email;
 
+    private Integer pointBalance;
+
     private String sha256Password;
 
-    String salt;
+    private String salt;
 
     private Boolean wasActivated = false;
 
-    List<Receipt> receipts;
+
 }

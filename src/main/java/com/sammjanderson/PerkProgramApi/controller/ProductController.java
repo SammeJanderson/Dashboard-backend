@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/client")
+@RequestMapping("api/product")
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class ProductController {
 
