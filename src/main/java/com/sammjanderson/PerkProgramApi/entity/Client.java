@@ -1,5 +1,6 @@
 package com.sammjanderson.PerkProgramApi.entity;
 
+import com.sammjanderson.PerkProgramApi.utils.PasswordCryptography;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,6 +9,8 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -20,7 +23,7 @@ public class Client {
 
     @Id
     @GeneratedValue
-    @Type(type="org.hibernate.type.UUIDCharType")
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID clientId;
 
     @Column
@@ -40,6 +43,16 @@ public class Client {
 
     @Column
     private Boolean wasActivated = false;
+
+
+
+    {
+        try {
+            salt = PasswordCryptography.getSHA(name + email);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }
