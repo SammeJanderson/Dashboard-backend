@@ -52,7 +52,7 @@ public class ProductService {
     }
 
 
-    private Product verifyIfProductExists(UUID id) throws  ProductNotFoundException {
+    public Product verifyIfProductExists(UUID id) throws  ProductNotFoundException {
         return productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException((id)));
     }
 

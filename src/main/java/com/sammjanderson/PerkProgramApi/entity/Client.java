@@ -45,6 +45,10 @@ public class Client {
     @Column
     private Boolean isActive = false;
 
+    @Column
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Transaction> transactions;
+
 
 
     {

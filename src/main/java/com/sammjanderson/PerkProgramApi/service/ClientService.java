@@ -55,6 +55,8 @@ public class ClientService {
         return CreateMessageDTO("The account password was changed and is now activated id:", dto.getId());
     }
 
+
+    //TODO: create a different service for the authentication
     public String verifyId(AccountCredentialsDTO dto) throws ClientNotFoundException, NoSuchAlgorithmException {
         Client clientToVerify = verifyIfClientExists(dto.getId());
         String password = PasswordCryptography.getSHA(dto.getPassword()+ clientToVerify.getSalt());
@@ -66,11 +68,8 @@ public class ClientService {
     }
 
 
-    //TODO: Change: acc password
-    //TODO :Update other information;
 
-
-    private Client verifyIfClientExists(UUID id) throws ClientNotFoundException {
+    public Client verifyIfClientExists(UUID id) throws ClientNotFoundException {
         return clientRepository.findById(id).orElseThrow(() -> new ClientNotFoundException((id)));
     }
 

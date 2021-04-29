@@ -1,5 +1,7 @@
 package com.sammjanderson.PerkProgramApi.entity;
 
+import com.sammjanderson.PerkProgramApi.enums.OrderStatus;
+import com.sammjanderson.PerkProgramApi.utils.OrderNumberGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,11 +23,20 @@ import java.util.UUID;
 public class Transaction {
 
     @Id
-    private Integer transactionId;
-
+    @GeneratedValue
+    @Type(type = "org.hibernate.type.UUIDCharType")
+    private UUID transactionId;
 
     @Column
     private String productName;
+
+    @Column
+    @Type(type = "org.hibernate.type.UUIDCharType")
+    private UUID productId;
+
+    @Column
+    @Type(type = "org.hibernate.type.UUIDCharType")
+    private UUID clientId;
 
     @Column
     private Integer productCost;
@@ -36,6 +47,11 @@ public class Transaction {
     @Column
     private Integer newBalance;
 
+    @Column
+    private String orderNumber = OrderNumberGenerator.generateOrderId();
+
+    @Column
+    private OrderStatus orderStatus = OrderStatus.PENDENT;
 
 
 }

@@ -1,0 +1,10 @@
+activate acc
+change password
+make transaction
+
+create acc
+create product
+edit acc
+edit product
+complete/cancel trasanction
+

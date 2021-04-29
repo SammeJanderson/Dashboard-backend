@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -14,8 +16,10 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID productId;
 
     @Column
@@ -28,10 +32,13 @@ public class Product {
     private Integer points;
 
     @Column
-    private String[] images;
+    @ElementCollection
+    private List<String> images;
 
     @Column
     @Embedded
     private Company company;
+
+
 
 }
