@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor(onConstructor = @__(@Autowired))
@@ -25,9 +26,9 @@ public class ClientService {
     private ClientRepository clientRepository;
 
 
-    public List<Client> getAll() {
+    public List<ClientDTO> getAll() {
         List<Client> allClients = clientRepository.findAll();
-        return allClients;
+        return allClients.stream().map(clientMapper::toDTO).collect(Collectors.toList());
     }
 
 
