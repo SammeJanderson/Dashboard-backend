@@ -1,4 +1,4 @@
-package com.sammjanderson.PerkProgramApi.dto.request.trasaction;
+package com.sammjanderson.PerkProgramApi.dto.request.order;
 
 
 import lombok.AllArgsConstructor;

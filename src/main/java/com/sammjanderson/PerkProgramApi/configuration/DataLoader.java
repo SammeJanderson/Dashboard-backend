@@ -21,9 +21,17 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        //register client
         this.clientService.registerNewClient(new NewClientDTO("Samme", "Janderson", 200));
+        //register product
         this.productService.createNewProduct(new ProductDTO("Product 01", "Bla bla bla", 100,
                 List.of("imageURl01", "ImageUrl2", "ImageURL03"), new Company("Company name", "company Logo url")));
 
+        //activate client account
+
+
+        //authenticate client account
+
+        // make transaction
     }
 }

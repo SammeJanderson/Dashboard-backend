@@ -8,10 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -51,7 +49,11 @@ public class Transaction {
     private String orderNumber = OrderNumberGenerator.generateOrderId();
 
     @Column
+    @Enumerated
     private OrderStatus orderStatus = OrderStatus.PENDENT;
+
+    @Column
+    private Date lastUpdated = new Date(System.currentTimeMillis());
 
 
 }
