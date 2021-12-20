@@ -40,7 +40,7 @@ public class Client {
     private String sha256Password;
 
     @Column
-    String salt;
+    private String salt;
 
     @Column
     private Boolean isActive = false;
